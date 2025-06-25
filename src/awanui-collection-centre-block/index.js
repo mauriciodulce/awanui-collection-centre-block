@@ -1,39 +1,100 @@
-/**
- * Registers a new block provided a unique name and an object defining its behavior.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType } from "@wordpress/blocks";
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+import {
+  PanelBody,
+  SelectControl,
+  Spinner,
+  Notice,
+} from "@wordpress/components";
+import { useState, useEffect } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
+import apiFetch from "@wordpress/api-fetch";
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * All files containing `style` keyword are bundled together. The code used
- * gets applied both to the front of your site and to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './style.scss';
+import "./style.scss";
 
-/**
- * Internal dependencies
- */
-import Edit from './edit';
-import save from './save';
-import metadata from './block.json';
+function CollectionCentreBlock({ attributes, setAttributes }) {
+  const { centreId } = attributes;
+  const [centres, setCentres] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-/**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-registerBlockType( metadata.name, {
-	/**
-	 * @see ./edit.js
-	 */
-	edit: Edit,
+  const blockProps = useBlockProps({ className: "awanui-collection-centre-block" });
 
-	/**
-	 * @see ./save.js
-	 */
-	save,
-} );
+  useEffect(() => {
+    fetchCentres();
+  }, []);
+
+  const fetchCentres = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await apiFetch({ path: "/awanui/v1/centres" });
+
+      if (response && Array.isArray(response)) {
+        setCentres(response);
+      } else {
+        throw new Error("Invalid API response");
+      }
+    } catch (err) {
+      setError(err.message || "Failed to load collection centres");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const centreOptions = [
+    { label: __("Select a collection centre...", "awanui-collection-centre-block"), value: "" },
+    ...centres.map((centre) => ({
+      label: centre.name || centre.title || `Centre ${centre.id}`,
+      value: centre.id,
+    })),
+  ];
+
+  const handleCentreChange = (newCentreId) => {
+    setAttributes({ centreId: newCentreId });
+  };
+
+  return (
+    <>
+      <InspectorControls>
+        <PanelBody title={__("Collection Centre Settings", "awanui-collection-centre-block")}>
+          {isLoading && <Spinner />}
+
+          {error && (
+            <Notice status="error" isDismissible={false}>
+              {error}
+            </Notice>
+          )}
+
+          <SelectControl
+            label={__("Select Collection Centre", "awanui-collection-centre-block")}
+            value={centreId}
+            options={centreOptions}
+            onChange={handleCentreChange}
+            disabled={isLoading}
+          />
+
+          {centreId && (
+            <Notice status="info" isDismissible={false}>
+              {__("Selected Centre ID:", "awanui-collection-centre-block")} {centreId}
+            </Notice>
+          )}
+        </PanelBody>
+      </InspectorControls>
+
+      <div {...blockProps}>
+        <p>
+          {centreId
+            ? __("Collection centre selected. It will be rendered on the frontend.", "awanui-collection-centre-block")
+            : __("Please select a collection centre.", "awanui-collection-centre-block")}
+        </p>
+      </div>
+    </>
+  );
+}
+
+registerBlockType("awanui/awanui-collection-centre-block", {
+  edit: CollectionCentreBlock,
+  save: () => null,
+});

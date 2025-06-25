@@ -5,8 +5,161 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-awanui-collection-centre-block {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.awanui-collection-centre-block {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .awanui-centre-placeholder {
+        text-align: center;
+        padding: 40px 20px;
+        color: #666;
+        font-style: italic;
+
+        p {
+            margin: 0;
+            font-size: 16px;
+        }
+    }
+
+    .awanui-centre-info {
+        .awanui-centre-name {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid #0073aa;
+            padding-bottom: 10px;
+        }
+
+        .awanui-centre-details {
+            display: grid;
+            gap: 15px;
+
+            > div {
+                strong {
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #0073aa;
+                    font-weight: 600;
+                }
+
+                p {
+                    margin: 0;
+                    color: #333;
+                    line-height: 1.5;
+                }
+
+                pre {
+                    margin: 0;
+                    font-family: inherit;
+                    white-space: pre-line;
+                    color: #333;
+                    line-height: 1.4;
+                }
+            }
+
+            .awanui-centre-address {
+                p {
+                    font-weight: 500;
+                }
+            }
+
+            .awanui-centre-phone {
+                p {
+                    font-weight: 500;
+                    color: #0073aa;
+                }
+            }
+
+            .awanui-centre-hours {
+                pre {
+                    background-color: #f9f9f9;
+                    padding: 10px;
+                    border-radius: 4px;
+                    border: 1px solid #e0e0e0;
+                    font-size: 14px;
+                }
+            }
+
+            .awanui-centre-directions {
+                margin-top: 10px;
+
+                .awanui-directions-link {
+                    display: inline-block;
+                    background-color: #0073aa;
+                    color: white;
+                    padding: 12px 20px;
+                    text-decoration: none;
+                    border-radius: 4px;
+                    font-weight: 500;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: #005a87;
+                        color: white;
+                    }
+
+                    &:focus {
+                        outline: 2px solid #0073aa;
+                        outline-offset: 2px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Editor specific styles
+.wp-block-awanui-collection-centre-block {
+    .components-panel__body {
+        .components-base-control {
+            margin-bottom: 16px;
+        }
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .awanui-collection-centre-block {
+        padding: 15px;
+        margin: 15px 0;
+
+        .awanui-centre-info {
+            .awanui-centre-name {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .awanui-centre-details {
+                gap: 12px;
+
+                .awanui-centre-directions {
+                    .awanui-directions-link {
+                        padding: 10px 16px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Print styles
+@media print {
+    .awanui-collection-centre-block {
+        box-shadow: none;
+        border: 1px solid #000;
+
+        .awanui-centre-directions {
+            .awanui-directions-link {
+                background-color: transparent;
+                color: #000;
+                border: 1px solid #000;
+            }
+        }
+    }
 }
