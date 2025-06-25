@@ -101,8 +101,8 @@ awanui-collection-centre-block/
 ## 🧾 Author
 
 **Mauricio Dulce**
-Email: [mauricio.dulce@gmail.com]
-GitHub: [https://github.com/mauriciodulce](https://github.com/mauriciodulce)
+- Email: [mauricio.dulce@gmail.com]
+- GitHub: [https://github.com/mauriciodulce](https://github.com/mauriciodulce)
 
 ---
 
