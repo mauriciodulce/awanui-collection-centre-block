@@ -1,6 +1,6 @@
 # Awanui Collection Centre Block
 
-A custom WordPress block that displays collection centre information from Awanui Labs. The block allows editors to select a centre from a list. The selected centre's details—address, phone, opening hours, and directions—are rendered dynamically on the front end.
+A custom WordPress block that displays collection centre information from Awanui Labs. The block allows editors to select a centre from a list and renders the full address, phone, opening hours, and a link to directions—both in the editor and on the front end.
 
 ---
 
@@ -8,12 +8,13 @@ A custom WordPress block that displays collection centre information from Awanui
 
 - Selector (dropdown) to choose a Collection Centre
 - Fetches live data from the public Awanui Labs API
-- ⚠️ This block renders only on the front end. The editor displays only the centre selector.
+- Preview renders immediately inside the editor
 - Front-end output matches selected centre
 - Graceful fallback if API is unreachable
 - Fully compatible with WordPress 6.4+ and PHP 8.1+
 
 ---
+
 
 ## 🛠️ Build & Install
 
@@ -48,13 +49,13 @@ wp plugin activate awanui-collection-centre-block
 ```
 
 ---
-
 ## 🧪 How to Use
 
 1. In the block editor, insert **"Awanui Collection Centre"** block.
 2. Choose a location from the dropdown list.
-3. The editor saves the selected centre but does not render a preview.
-4. On the front end, the full information is displayed dynamically.
+3. The block fetches and displays data in the editor.
+4. On the front end, the same info is rendered dynamically.
+
 ---
 
 ## 🌐 API Source
@@ -108,8 +109,6 @@ awanui-collection-centre-block/
 ## 📹 Deliverables
 
 - ✅ Plugin source code (this repo)
-- ✅ Screen recording (editor + frontend demo):
-  [Watch video](https://f003.backblazeb2.com/file/dropshare-uploads/Screen-Recording-2025-06-25-17-07-33.mp4)
 - ✅ Setup instructions (this README)
 
 ---
