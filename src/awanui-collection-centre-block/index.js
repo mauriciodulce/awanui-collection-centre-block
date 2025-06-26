@@ -37,7 +37,7 @@ function CollectionCentreBlock({ attributes, setAttributes }) {
     fetchCentres();
   }, []);
 
-  // Efecto para obtener datos del centro cuando cambia centreId
+  // Effect to fetch centre data when centreId changes
   useEffect(() => {
     if (centreId && centres.length > 0) {
       fetchSelectedCentre(centreId);
@@ -89,7 +89,7 @@ function CollectionCentreBlock({ attributes, setAttributes }) {
     setError(null);
 
     try {
-      // Primero buscar en los centros ya cargados
+      // First, search in the already loaded centres
       const foundCentre = centres.find(centre => centre.id == id);
 
       if (foundCentre) {
@@ -98,7 +98,7 @@ function CollectionCentreBlock({ attributes, setAttributes }) {
         return;
       }
 
-      // Si no se encuentra, hacer una petición específica
+      // If not found, make a specific request
       const response = await apiFetch({
         path: `/awanui/v1/centres/${id}`
       });
