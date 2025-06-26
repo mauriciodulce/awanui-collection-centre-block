@@ -85,7 +85,7 @@ if (!function_exists('awanui_render_centre_error')) {
     function awanui_render_centre_error($message)
     {
         $safe_message = esc_html($message);
-        return "<div class=\"awanui-centre-error\"><p>{$safe_message}</p></div>";
+        return '<div class="awanui-centre-error"><p>' . $safe_message . '</p></div>';
     }
 }
 
@@ -106,13 +106,13 @@ if (!function_exists('awanui_fetch_centre_from_api')) {
      */
     function awanui_fetch_centre_from_api($centre_id)
     {
-        $api_url = "https://loc.aphg.co.nz/wp-json/labtests/v1/centres/";
+        $api_url = 'https://loc.aphg.co.nz/wp-json/labtests/v1/centres/';
 
         // Make HTTP request with reasonable timeout
         $response = wp_remote_get($api_url, [
-            "timeout" => 10,
-            "headers" => [
-                "User-Agent" => "WordPress/AwanuiCollectionCentreBlock"
+            'timeout' => 10,
+            'headers' => [
+                'User-Agent' => 'WordPress/AwanuiCollectionCentreBlock'
             ]
         ]);
 
@@ -279,7 +279,7 @@ if (!function_exists('awanui_generate_maps_url')) {
      */
     function awanui_generate_maps_url($address)
     {
-        $base_url = "https://www.google.com/maps/search/?api=1&query=";
+        $base_url = 'https://www.google.com/maps/search/?api=1&query=';
         return $base_url . urlencode($address);
     }
 }
