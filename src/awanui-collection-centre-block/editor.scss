@@ -1,11 +1,11 @@
-// Estilos para el bloque en el editor y frontend
+// Styles for the block in the editor
 .awanui-collection-centre-block {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   background: #fff;
 
-  // Estilos para el placeholder
+  // Styles for the placeholder
   .awanui-centre-placeholder {
     text-align: center;
     padding: 40px 20px;
@@ -18,7 +18,7 @@
     }
   }
 
-  // Estilos para el estado de carga
+  // Styles for the loading state
   .awanui-centre-loading {
     text-align: center;
     padding: 40px 20px;
@@ -33,7 +33,7 @@
     }
   }
 
-  // Estilos para errores
+  // Styles for error states
   .awanui-centre-error {
     text-align: center;
     padding: 20px;
@@ -43,7 +43,7 @@
     color: #721c24;
   }
 
-  // Estilos para la vista previa
+  // Styles for the preview
   .awanui-centre-preview {
     .awanui-centre-info {
       .awanui-centre-name {
@@ -129,14 +129,9 @@
   }
 }
 
-// Estilos específicos para el editor
-.wp-block-awanui-awanui-collection-centre-block {
-  .awanui-collection-centre-block {
-    // Estilos adicionales específicos del editor si son necesarios
-  }
-}
 
-// Estilos para dispositivos móviles
+
+// Styles for mobile devices
 @media (max-width: 768px) {
   .awanui-collection-centre-block {
     padding: 15px;
