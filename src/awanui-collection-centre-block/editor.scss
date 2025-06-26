@@ -1,9 +1,156 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+// Estilos para el bloque en el editor y frontend
+.awanui-collection-centre-block {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background: #fff;
 
-.wp-block-create-block-awanui-collection-centre-block {
-	border: 1px dotted #f00;
+  // Estilos para el placeholder
+  .awanui-centre-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-style: italic;
+
+    p {
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+
+  // Estilos para el estado de carga
+  .awanui-centre-loading {
+    text-align: center;
+    padding: 40px 20px;
+
+    .components-spinner {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+      color: #666;
+    }
+  }
+
+  // Estilos para errores
+  .awanui-centre-error {
+    text-align: center;
+    padding: 20px;
+    background: #fef7f7;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    color: #721c24;
+  }
+
+  // Estilos para la vista previa
+  .awanui-centre-preview {
+    .awanui-centre-info {
+      .awanui-centre-name {
+        margin: 0 0 20px 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #0073aa;
+        padding-bottom: 10px;
+      }
+
+      .awanui-centre-details {
+        display: grid;
+        gap: 20px;
+
+        .awanui-centre-address,
+        .awanui-centre-phone,
+        .awanui-centre-hours {
+          strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+          }
+
+          p, div {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+          }
+        }
+
+        .awanui-centre-hours {
+          div {
+            margin-bottom: 2px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        .awanui-centre-directions {
+          margin-top: 15px;
+
+          .awanui-directions-link {
+            display: inline-block;
+            background: #0073aa;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+              background: #005a87;
+              color: white;
+            }
+
+            &:focus {
+              box-shadow: 0 0 0 2px #005a87;
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+
+    .awanui-editor-notice {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f0f6fc;
+      border: 1px solid #c7d2fe;
+      border-radius: 4px;
+      text-align: center;
+
+      em {
+        color: #374151;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Estilos específicos para el editor
+.wp-block-awanui-awanui-collection-centre-block {
+  .awanui-collection-centre-block {
+    // Estilos adicionales específicos del editor si son necesarios
+  }
+}
+
+// Estilos para dispositivos móviles
+@media (max-width: 768px) {
+  .awanui-collection-centre-block {
+    padding: 15px;
+
+    .awanui-centre-preview {
+      .awanui-centre-info {
+        .awanui-centre-name {
+          font-size: 20px;
+        }
+
+        .awanui-centre-details {
+          gap: 15px;
+        }
+      }
+    }
+  }
 }
